@@ -12,6 +12,9 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.1",
-    "fast-gateway": "^3.5.0"
+    "fast-gateway": "^3.5.0",
+    "install": "^0.13.0",
+    "node-fetch": "^3.3.2",
+    "npm": "^10.9.0"
   }
 }
