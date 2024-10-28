@@ -20,7 +20,7 @@ app.get('/reviews/api', async (req, res) => {
             const data = doc.data();
             const movieId = data.movieId; 
 
-            // Verifica que movieId no sea vacío
+            // movieId no sea vacío
             if (!movieId) {
                 return { id: doc.id, ...data, movieTitle: 'Desconocido' };
             }
@@ -56,7 +56,7 @@ app.post('/reviews', async (req, res) => {
             rating: parseInt(rating, 10),
         };
 
-        const response = await axios.post(`https://microserviciosejemplo-6zp6.onrender.com/api/reviews`, newReview);
+        const response = await axios.post(`https://microserviciosejemplo-6zp6.onrender.com/reviews/api`, newReview);
         res.status(201).json(response.data);
     } catch (error) {
         console.error('Error al agregar la reseña:', error.message);
