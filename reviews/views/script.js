@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función para obtener las películas
 async function fetchMovies() {
     try {
-        const response = await fetch('https://api-gateway-tv03.onrender.com/movies'); 
-        const movies = await response.json();
+        const response = await axios.get('https://api-gateway-tv03.onrender.com/movies'); 
+        const movies = response.data; 
         populateMovieSelect(movies);
         displayReviews(); 
     } catch (error) {
-        console.error('Error al obtener las películas:', error);
+        console.error('Error al obtener las películas:', error.response ? error.response.data : error.message);
     }
 }
 
@@ -46,8 +46,8 @@ async function displayReviews() {
     reviewContainer.innerHTML = '';
 
     try {
-        const response = await fetch('https://api-gateway-tv03.onrender.com/reviews'); 
-        const reviews = await response.json();
+        const response = await axios.get('https://api-gateway-tv03.onrender.com/reviews'); 
+        const reviews = response.data; 
 
         const filteredReviews = movieFilterValue ? reviews.filter(review => review.movieTitle === movieFilterValue) : reviews;
 
@@ -63,7 +63,7 @@ async function displayReviews() {
             reviewContainer.appendChild(card);
         });
     } catch (error) {
-        console.error('Error al obtener las reseñas:', error);
+        console.error('Error al obtener las reseñas:', error.response ? error.response.data : error.message);
     }
 }
 
@@ -86,8 +86,8 @@ async function filterReviews() {
     reviewContainer.innerHTML = ''; 
 
     try {
-        const response = await fetch('https://api-gateway-tv03.onrender.com/reviews'); 
-        const reviews = await response.json();
+        const response = await axios.get('https://api-gateway-tv03.onrender.com/reviews'); 
+        const reviews = response.data;
 
         // Filtrar reseñas basándose en el movieId
         const filteredReviews = movieFilterValue ? reviews.filter(review => review.movieId === movieFilterValue) : reviews;
@@ -105,13 +105,13 @@ async function filterReviews() {
             reviewContainer.appendChild(card);
         });
     } catch (error) {
-        console.error('Error al obtener las reseñas:', error);
+        console.error('Error al obtener las reseñas:', error.response ? error.response.data : error.message);
     }
 }
 
 // Función para agregar una reseña
 async function addReview(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault(); 
     const author = document.getElementById('author').value;
     const movieId = document.getElementById('movieSelect').value;
     const content = document.getElementById('content').value;
@@ -124,24 +124,18 @@ async function addReview(event) {
     }
 
     try {
-        const response = await fetch('https://api-gateway-tv03.onrender.com/reviews', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ author, movieId, content, rating }),
+        const response = await axios.post('https://api-gateway-tv03.onrender.com/reviews', {
+            author,
+            movieId,
+            content,
+            rating
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error);
-        }
-
-        const data = await response.json();
+        const data = response.data; 
         console.log(data.message);
         closeModal(); 
         displayReviews(); 
     } catch (error) {
-        console.error('Error al agregar la reseña:', error.message);
+        console.error('Error al agregar la reseña:', error.response ? error.response.data : error.message);
     }
 }
