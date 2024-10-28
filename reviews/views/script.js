@@ -16,12 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función para obtener las películas
 async function fetchMovies() {
     try {
-        const response = await axios.get('https://api-gateway-tv03.onrender.com/movies'); 
-        const movies = response.data; 
-        populateMovieSelect(movies);
-        displayReviews(); 
+        const response = await axios.get('https://api-gateway-tv03.onrender.com/movies');
+        console.log(response.data); // Verifica la estructura de la respuesta
+
+        if (Array.isArray(response.data)) {
+            const movies = response.data;
+            populateMovieSelect(movies);
+            displayReviews(); 
+        } else {
+            console.error('La respuesta no es un array:', response.data);
+        }
     } catch (error) {
-        console.error('Error al obtener las películas:', error.response ? error.response.data : error.message);
+        console.error('Error al obtener las películas:', error);
     }
 }
 
