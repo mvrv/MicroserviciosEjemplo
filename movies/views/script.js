@@ -3,14 +3,14 @@ let movies = [];
 
 // Función para cargar las películas desde la base de datos
 async function loadMovies() {
-    const response = await fetch('/movies/obtener');
+    const response = await fetch('https://microserviciosejemplo.onrender.com/movies/obtener');
     movies = await response.json();
     displayMovies();
 }
 
 // Función para agregar película
 async function addMovie(movie) {
-    const response = await fetch('/movies', {
+    const response = await fetch('https://microserviciosejemplo.onrender.com/movies', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const backButton = document.getElementById('backButton');
     backButton.addEventListener('click', () => {
-        window.location.href = 'http://localhost:8080/';
+        window.location.href = 'https://home-yrrj.onrender.com/';
     });
 
     const closeButton = document.getElementById('closeButton');
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función para obtener las películas
 async function fetchMovies() {
     try {
-        const response = await fetch('http://localhost:8081/movies'); 
+        const response = await fetch('https://microserviciosejemplo.onrender.com/movies'); 
         const movies = await response.json();
         displayMovies(movies);
     } catch (error) {
@@ -92,7 +92,7 @@ document.getElementById('addMovieForm').addEventListener('submit', async (event)
     const caratula = document.getElementById('caratula').value;
 
     try {
-        const response = await fetch('http://localhost:8081/movies', {
+        const response = await fetch('https://microserviciosejemplo.onrender.com/movies', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
