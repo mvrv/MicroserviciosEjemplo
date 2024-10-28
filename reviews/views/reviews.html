@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Reseñas de Películas</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Reseñas de Películas</h1>
+
+        <label for="movieFilter">Filtrar por Película:</label>
+        <select id="movieFilter">
+            <option value="">Selecciona una película</option>
+        </select>
+
+        <button id="addReviewButton">Agregar Reseña</button>
+
+        <div id="review-container" class="review-container"></div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeButton" class="close">&times;</span>
+            <h2>Agregar Reseña</h2>
+            <form id="addReviewForm">
+                <input type="text" id="author" placeholder="Nombre del Usuario" required>
+                <select id="movieSelect"></select>
+                    <option value="">Selecciona una película</option>
+                </select>
+                <textarea id="content" placeholder="Comentario (máx. 50 caracteres)" maxlength="50 required"></textarea>
+                <label for="rating">Calificación:</label>
+                <select id="rating" required>
+                    <option value="">Selecciona una calificación</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit">Agregar Reseña</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

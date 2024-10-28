@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Agregar Película</title>
+</head>
+<body>
+    <button class="backButton" id="backButton">Regresar a Home</button>
+    <div class="container">
+        <h1>Agregar Nueva Película</h1>
+        <form id="addMovieForm">
+            <input type="text" id="title" placeholder="Título" required>
+            <input type="text" id="genero" placeholder="Género" required>
+            <input type="number" id="year" placeholder="Año" required>
+            <input type="text" id="caratula" placeholder="URL de la Carátula" required>
+            <button type="submit">Agregar Película</button>
+        </form>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeButton">&times;</span>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
