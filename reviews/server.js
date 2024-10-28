@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 
 // Obtener todas las reseñas
-app.get('/api/reviews', async (req, res) => {
+app.get('/reviews/api', async (req, res) => {
     try {
         const snapshot = await db.collection('reviews').get();
         const reviews = await Promise.all(snapshot.docs.map(async (doc) => {

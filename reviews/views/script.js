@@ -52,12 +52,11 @@ async function displayReviews() {
     reviewContainer.innerHTML = '';
 
     try {
-        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/api/reviews'); 
+        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/reviews/api'); 
         const reviews = response.data;
 
         console.log('Reseñas:', reviews);
 
-        // Asegúrate de que reviews es un array
         if (!Array.isArray(reviews)) {
             console.error('La respuesta no es un array:', reviews);
             return;
@@ -65,7 +64,6 @@ async function displayReviews() {
 
         const filteredReviews = movieFilterValue ? reviews.filter(review => review.movieTitle === movieFilterValue) : reviews;
 
-        // Asegúrate de que filteredReviews es un array
         if (!Array.isArray(filteredReviews)) {
             console.error('filteredReviews no es un array:', filteredReviews);
             return;
