@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 
 // Obtener todas las reseñas
-app.get('/reviews/api', async (req, res) => {
+app.get('/reviews', async (req, res) => {
     try {
         const snapshot = await db.collection('reviews').get();
         const reviews = await Promise.all(snapshot.docs.map(async (doc) => {
@@ -56,7 +56,7 @@ app.post('/reviews', async (req, res) => {
             rating: parseInt(rating, 10),
         };
 
-        const response = await axios.post(`https://microserviciosejemplo-6zp6.onrender.com/reviews/api`, newReview);
+        const response = await axios.post(`https://microserviciosejemplo-6zp6.onrender.com/reviews`, newReview);
         res.status(201).json(response.data);
     } catch (error) {
         console.error('Error al agregar la reseña:', error.message);

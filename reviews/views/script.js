@@ -52,7 +52,7 @@ async function displayReviews() {
     reviewContainer.innerHTML = '';
 
     try {
-        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/reviews/api'); 
+        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/reviews'); 
         const reviews = response.data;
 
         console.log('Reseñas:', reviews);
@@ -104,7 +104,7 @@ async function filterReviews() {
     reviewContainer.innerHTML = ''; 
 
     try {
-        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/reviews/api'); 
+        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/reviews'); 
         const reviews = response.data;
 
         // Filtrar reseñas basándose en el movieId
@@ -142,7 +142,7 @@ async function addReview(event) {
     }
 
     try {
-        const response = await axios.post('https://microserviciosejemplo-6zp6.onrender.com/reviews/api', {
+        const response = await axios.post('https://microserviciosejemplo-6zp6.onrender.com/reviews', {
             author,
             movieId,
             content,
