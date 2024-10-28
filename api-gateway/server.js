@@ -16,7 +16,7 @@ app.get('/movies', (req, res) => {
 });
 
 app.get('/reviews', (req, res) => {
-    res.redirect('https://tu-dominio-de-render.com/reviews');
+    res.redirect('https://microserviciosejemplo-6zp6.onrender.com');
 });
 
 app.listen(port, () => {
