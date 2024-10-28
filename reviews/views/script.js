@@ -52,7 +52,7 @@ async function displayReviews() {
     reviewContainer.innerHTML = '';
 
     try {
-        const response = await axios.get('https://api-gateway-tv03.onrender.com/reviews'); 
+        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/api/reviews'); 
         const reviews = response.data; 
 
         const filteredReviews = movieFilterValue ? reviews.filter(review => review.movieTitle === movieFilterValue) : reviews;
@@ -92,7 +92,7 @@ async function filterReviews() {
     reviewContainer.innerHTML = ''; 
 
     try {
-        const response = await axios.get('https://api-gateway-tv03.onrender.com/reviews'); 
+        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/api/reviews'); 
         const reviews = response.data;
 
         // Filtrar reseñas basándose en el movieId
@@ -130,7 +130,7 @@ async function addReview(event) {
     }
 
     try {
-        const response = await axios.post('https://api-gateway-tv03.onrender.com/reviews', {
+        const response = await axios.post('https://microserviciosejemplo-6zp6.onrender.com/api/reviews', {
             author,
             movieId,
             content,
