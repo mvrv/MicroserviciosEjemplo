@@ -46,7 +46,7 @@ app.post('/api/reviews', async (req, res) => {
 });
 
 
-app.get('/reviews', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', '/reviews.html'));
 });
 
