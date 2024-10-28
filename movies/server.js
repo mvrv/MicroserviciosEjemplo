@@ -35,7 +35,7 @@ app.post('/movies', async (req, res) => {
     }
 });
 
-app.get('/movies', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', '/movies.html'));
 });
 
