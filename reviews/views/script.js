@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function fetchMovies() {
     try {
         const response = await axios.get('https://api-gateway-tv03.onrender.com/movies');
-        console.log(response.data); // Verifica la estructura de la respuesta
+        console.log(response.data); 
 
         if (Array.isArray(response.data)) {
             const movies = response.data;
