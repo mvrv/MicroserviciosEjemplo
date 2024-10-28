@@ -15,12 +15,12 @@ async function fetchMovies() {
 
     const addMovie = document.getElementById('add-movie');
     addMovie.addEventListener('click', () => {
-        window.location.href = 'http://localhost:8081/movies';
+        window.location.href = 'https://microserviciosejemplo.onrender.com';
     });
 
     const addReview = document.getElementById('add-review');
     addReview.addEventListener('click', () => {
-        window.location.href = 'http://localhost:8082/review';
+        window.location.href = 'https://microserviciosejemplo-6zp6.onrender.com/api/reviews';
     });
 
 // Función para mostrar las películas en la cuadrícula
