@@ -53,9 +53,23 @@ async function displayReviews() {
 
     try {
         const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/api/reviews'); 
-        const reviews = response.data; 
+        const reviews = response.data;
+
+        console.log('Reseñas:', reviews);
+
+        // Asegúrate de que reviews es un array
+        if (!Array.isArray(reviews)) {
+            console.error('La respuesta no es un array:', reviews);
+            return;
+        }
 
         const filteredReviews = movieFilterValue ? reviews.filter(review => review.movieTitle === movieFilterValue) : reviews;
+
+        // Asegúrate de que filteredReviews es un array
+        if (!Array.isArray(filteredReviews)) {
+            console.error('filteredReviews no es un array:', filteredReviews);
+            return;
+        }
 
         filteredReviews.forEach(review => {
             const card = document.createElement('div');
@@ -69,7 +83,7 @@ async function displayReviews() {
             reviewContainer.appendChild(card);
         });
     } catch (error) {
-        console.error('Error al obtener las reseñas:', error.response ? error.response.data : error.message);
+        console.error('Error al obtener las reseñas:', error.message);
     }
 }
 
