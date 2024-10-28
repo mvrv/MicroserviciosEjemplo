@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080; // Usa el puerto de la variable de entorno o 8080 como predeterminado
 const db = require('./firebaseconfig');
 const path = require('path');
 const cors = require('cors');
