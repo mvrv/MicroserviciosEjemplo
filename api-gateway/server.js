@@ -9,6 +9,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'views')));
 
+const cors = require('cors');
+app.use(cors({
+    origin: '*',
+}));
+
+
 // Ruta de prueba para verificar que el gateway funciona
 app.get('/gateway', (req, res) => {
     res.send('API Gateway funcionando');
