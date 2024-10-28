@@ -3,7 +3,7 @@ const app = express();
 const db = require('./firebaseconfig');
 const cors = require('cors');
 const path = require('path');
-const port = 8082; 
+const port = process.env.PORT || 8082; 
 
 app.use(cors());
 app.use(express.json()); 
@@ -60,7 +60,7 @@ app.post('/api/reviews', async (req, res) => {
     }
 });
 
-// Ruta para servir la página HTML
+// (Opcional) Ruta para servir la página HTML
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', '/reviews.html'));
 });
