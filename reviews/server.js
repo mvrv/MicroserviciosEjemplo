@@ -11,13 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'views')));
 
-// URL del API Gateway 
-const apiGatewayUrl = 'https://microserviciosejemplo-6zp6.onrender.com'; 
 
 // Obtener todas las reseñas
 app.get('/api/reviews', async (req, res) => {
     try {
-        const response = await axios.get(`${apiGatewayUrl}/api/reviews`);
+        const response = await axios.get(`https://microserviciosejemplo-6zp6.onrender.com/api/reviews`);
         res.status(200).json(response.data);
     } catch (error) {
         console.error('Error al obtener las reseñas:', error.message);
@@ -37,7 +35,7 @@ app.post('/reviews', async (req, res) => {
             rating: parseInt(rating, 10),
         };
 
-        const response = await axios.post(`${apiGatewayUrl}/api/reviews`, newReview);
+        const response = await axios.post(`https://microserviciosejemplo-6zp6.onrender.com/api/reviews`, newReview);
         res.status(201).json(response.data);
     } catch (error) {
         console.error('Error al agregar la reseña:', error.message);
