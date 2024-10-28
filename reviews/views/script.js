@@ -52,7 +52,7 @@ async function displayReviews() {
     reviewContainer.innerHTML = '';
 
     try {
-        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/reviews'); 
+        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/api/reviews'); 
         const reviews = response.data;
 
         console.log('Reseñas:', reviews);

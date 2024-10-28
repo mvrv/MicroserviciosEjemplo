@@ -12,10 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'views')));
 
 // URL del API Gateway 
-const apiGatewayUrl = 'https://api-gateway-tv03.onrender.com'; 
+const apiGatewayUrl = 'https://microserviciosejemplo-6zp6.onrender.com'; 
 
 // Obtener todas las reseñas
-app.get('/reviews', async (req, res) => {
+app.get('/api/reviews', async (req, res) => {
     try {
         const response = await axios.get(`${apiGatewayUrl}/reviews`);
         res.status(200).json(response.data);
