@@ -15,11 +15,30 @@ app.use(express.static(path.join(__dirname, 'views')));
 // Obtener todas las reseñas
 app.get('/api/reviews', async (req, res) => {
     try {
-        const response = await db.collection('reviews').get();
-        res.status(200).json(response.data);
+        const snapshot = await db.collection('reviews').get();
+        const reviews = await Promise.all(snapshot.docs.map(async (doc) => {
+            const data = doc.data();
+            const movieId = data.movieId; 
+
+            // Verifica que movieId no sea vacío
+            if (!movieId) {
+                return { id: doc.id, ...data, movieTitle: 'Desconocido' };
+            }
+
+            try {
+                // Obtener el título de la película utilizando el movieId
+                const movieSnapshot = await db.collection('movies').doc(movieId).get();
+                const movieData = movieSnapshot.exists ? movieSnapshot.data() : { title: 'Desconocido' }; 
+                return { id: doc.id, ...data, movieTitle: movieData.title }; 
+            } catch (error) {
+                console.error('Error al obtener la película:', error);
+                return { id: doc.id, ...data, movieTitle: 'Error al obtener título' }; 
+            }
+        }));
+        res.status(200).json(reviews);
     } catch (error) {
-        console.error('Error al obtener las reseñas:', error.message);
-        res.status(500).json({ error: 'Error al obtener las reseñas: ' + error.message });
+        console.error('Error al obtener las reseñas:', error);
+        res.status(500).json({ error: 'Error al obtener las reseñas: ' + error.message }); 
     }
 });
 
