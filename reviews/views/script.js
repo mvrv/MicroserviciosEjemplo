@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función para obtener las películas
 async function fetchMovies() {
     try {
-        const response = await axios.get('https://api-gateway-tv03.onrender.com/movies');
+        const response = await axios.get('https://api-gateway-tv03.onrender.com/movies/obtener');
         console.log(response.data); 
 
         if (Array.isArray(response.data)) {
