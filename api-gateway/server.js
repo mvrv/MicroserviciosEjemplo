@@ -33,7 +33,7 @@ app.get('/movies', async (req, res) => {
 // Redirigir a la API de reseñas
 app.get('/reviews', async (req, res) => {
     try {
-        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/api/reviews');
+        const response = await axios.get('https://microserviciosejemplo-6zp6.onrender.com/reviews');
         res.json(response.data);
     } catch (error) {
         console.error('Error al obtener reseñas:', error);

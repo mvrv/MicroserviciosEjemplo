@@ -45,8 +45,8 @@ app.post('/api/reviews', async (req, res) => {
     }
 });
 
-// (Opcional) Ruta para servir la página HTML
-app.get('/', (req, res) => {
+
+app.get('/reviews', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', '/reviews.html'));
 });
 
