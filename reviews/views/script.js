@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función para obtener las películas
 async function fetchMovies() {
     try {
-        const response = await fetch('http://localhost:8080/movies'); 
+        const response = await fetch('https://api-gateway-tv03.onrender.com/movies'); 
         const movies = await response.json();
         populateMovieSelect(movies);
         displayReviews(); 
@@ -46,7 +46,7 @@ async function displayReviews() {
     reviewContainer.innerHTML = '';
 
     try {
-        const response = await fetch('http://localhost:8082/api/reviews'); 
+        const response = await fetch('ttps://microserviciosejemplo-6zp6.onrender.com/api/reviews'); 
         const reviews = await response.json();
 
         const filteredReviews = movieFilterValue ? reviews.filter(review => review.movieTitle === movieFilterValue) : reviews;
@@ -86,7 +86,7 @@ async function filterReviews() {
     reviewContainer.innerHTML = ''; 
 
     try {
-        const response = await fetch('http://localhost:8082/api/reviews'); 
+        const response = await fetch('https://microserviciosejemplo-6zp6.onrender.com/api/reviews'); 
         const reviews = await response.json();
 
         // Filtrar reseñas basándose en el movieId
@@ -124,7 +124,7 @@ async function addReview(event) {
     }
 
     try {
-        const response = await fetch('http://localhost:8082/api/reviews', {
+        const response = await fetch('https://microserviciosejemplo-6zp6.onrender.com/api/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
