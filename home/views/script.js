@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función para obtener las películas
 async function fetchMovies() {
     try {
-        const response = await fetch('http://localhost:8080/movies');
+        const response = await fetch('https://home-yrrj.onrender.com/movies');
         const movies = await response.json();
         displayMovies(movies);
     } catch (error) {
