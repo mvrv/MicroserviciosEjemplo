@@ -15,13 +15,15 @@ app.use(express.static(path.join(__dirname, 'views')));
 // Obtener todas las reseñas
 app.get('/api/reviews', async (req, res) => {
     try {
-        const response = await axios.get(`https://microserviciosejemplo-6zp6.onrender.com/api/reviews`);
+        const response = await db.collection('reviews').get();
         res.status(200).json(response.data);
     } catch (error) {
         console.error('Error al obtener las reseñas:', error.message);
         res.status(500).json({ error: 'Error al obtener las reseñas: ' + error.message });
     }
 });
+
+
 
 // Agregar una nueva reseña
 app.post('/reviews', async (req, res) => {
