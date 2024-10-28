@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/movies', (req, res) => {
-    res.redirect('https://tu-dominio-de-render.com/movies'); 
+    res.redirect('https://microserviciosejemplo.onrender.com'); 
 });
 
 app.get('/reviews', (req, res) => {
