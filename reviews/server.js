@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 const apiGatewayUrl = 'https://api-gateway-tv03.onrender.com'; 
 
 // Obtener todas las reseñas
-app.get('/api/reviews', async (req, res) => {
+app.get('/reviews', async (req, res) => {
     try {
         const response = await axios.get(`${apiGatewayUrl}/reviews`);
         res.status(200).json(response.data);
@@ -26,7 +26,7 @@ app.get('/api/reviews', async (req, res) => {
 });
 
 // Agregar una nueva reseña
-app.post('/api/reviews', async (req, res) => {
+app.post('/reviews', async (req, res) => {
     const { author, movieId, content, rating } = req.body;
 
     try {
